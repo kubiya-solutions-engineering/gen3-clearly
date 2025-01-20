@@ -4,6 +4,30 @@ from kubiya_sdk.tools.registry import tool_registry
 
 class BaseClearlyTool(Tool):
     def __init__(self, name: str, description: str, args: list[Arg], content: str):
+        base_secrets = [
+            "AKAMAI_ACCESS_TOKEN",
+            "AKAMAI_CLIENT_SECRET", 
+            "AKAMAI_CLIENT_TOKEN",
+            "AKAMAI_HOST",
+            "AWS_ACCESS_KEY_ID",
+            "AWS_SECRET_ACCESS_KEY", 
+            "AWS_SESSION_TOKEN",
+            "CCI_LDAP_URL",
+            "CCI_ADMIN_USER",
+            "CCI_ADMIN_PASSWORD",
+            "AAD_CONTROLTOWER_ROLEACCESS_SECRET",
+            "AAD_PYTHON_AZUREAD_AWS_SECRET",
+            "AWS_SSO_IDENTITY_STORE_ID",
+            "AWS_SSO_IDENTITY_STORE_ARN",
+            "AWS_PERMISSION_SET_ARN_READ_ONLY_ACCESS",
+            "AWS_PERMISSION_SET_ARN_POWER_USER_ACCESS",
+            "AWS_PERMISSION_SET_ARN_POWER_USER_PLUS_ACCESS", 
+            "AWS_PERMISSION_SET_ARN_ADMINISTRATOR_ACCESS",
+            "AWS_GLOBAL_GROUP_ID_POWER_USER",
+            "AWS_GLOBAL_GROUP_ID_POWER_USER_PLUS",
+            "TEAMS_INCOMING_HOOK_URL"
+        ]
+        
         super().__init__(
             name=name,
             type="docker",
@@ -11,6 +35,7 @@ class BaseClearlyTool(Tool):
             description=description,
             args=args,
             content=content,
+            secrets=base_secrets
         )
 
 # Help tool
