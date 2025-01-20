@@ -1,6 +1,4 @@
-import inspect
-
-from kubiya_sdk.tools.models import Arg, Tool, FileSpec
+from kubiya_sdk.tools.models import Arg, Tool
 from kubiya_sdk.tools.registry import tool_registry
 
 
@@ -9,7 +7,7 @@ class BaseClearlyTool(Tool):
         super().__init__(
             name=name,
             type="docker",
-            image="python:3.12-slim-bullseye",  # TODO: Change to built image
+            image="ttl.sh/clearly-gen3:latest",
             description=description,
             args=args,
             content=content,
