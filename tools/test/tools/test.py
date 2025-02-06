@@ -4,6 +4,9 @@ from kubiya_sdk.tools.registry import tool_registry
 
 class BaseTestTool(Tool):
     def __init__(self, name: str, description: str, args: list[Arg], content: str):
+        base_secrets = [
+            "DOCKER_HUB_PASSWORD"
+        ]
         super().__init__(
             name=name,
             type="docker",
@@ -18,9 +21,8 @@ class BaseTestTool(Tool):
             description=description,
             args=args,
             content=content,
-            secrets=["DOCKER_HUB_PASSWORD"]
+            secrets=base_secrets
         )
-
 
 # Hello World tool
 hello_world = BaseTestTool(
