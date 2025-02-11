@@ -2,7 +2,6 @@ from kubiya_sdk.tools.models import Arg, Tool
 from kubiya_sdk.tools.registry import tool_registry
 from . import common
 
-
 class BaseClearlyTool(Tool):
     def __init__(self, name: str, description: str, args: list[Arg], content: str):
         base_secrets = [
@@ -32,7 +31,7 @@ class BaseClearlyTool(Tool):
         super().__init__(
             name=name,
             type="docker",
-            image="ttl.sh/clearly-gen3-testv2:latest",
+            image="ttl.sh/clearly-gen3-testv3:latest",
             description=description,
             args=args,
             content=content,
@@ -47,7 +46,7 @@ help_tool = BaseClearlyTool(
     description="Display help information about available functions",
     args=[],
     content="""
-python /app/clearly-actions.py help
+python /app/clearly_actions.py help
 """,
 )
 
@@ -63,7 +62,7 @@ direct_billing_network_creation_additions = BaseClearlyTool(
         Arg(name="gateway_id", description="Gateway ID")
     ],
     content="""
-python /app/clearly-actions.py direct_billing_network_creation_additions {vpc_id} {entity_acronym} {entity_locale} {entity_environment} {gateway_id}
+python /app/clearly_actions.py direct_billing_network_creation_additions {vpc_id} {entity_acronym} {entity_locale} {entity_environment} {gateway_id}
 """,
 )
 
@@ -73,7 +72,7 @@ test_akamai = BaseClearlyTool(
     description="Test Akamai connection",
     args=[],
     content="""
-python /app/clearly-actions.py test_akamai
+python /app/clearly_actions.py test_akamai
 """,
 )
 
@@ -84,7 +83,7 @@ create_zone = BaseClearlyTool(
         Arg(name="zone", description="Zone name to create")
     ],
     content="""
-python /app/clearly-actions.py create_zone {zone}
+python /app/clearly_actions.py create_zone {zone}
 """,
 )
 
@@ -99,7 +98,7 @@ create_dns_record = BaseClearlyTool(
         Arg(name="ttl", description="TTL value")
     ],
     content="""
-python /app/clearly-actions.py create_dns_record {zone} {record_type} {record_name} {record_value} {ttl}
+python /app/clearly_actions.py create_dns_record {zone} {record_type} {record_name} {record_value} {ttl}
 """,
 )
 
@@ -110,7 +109,7 @@ apply_zone_changelist = BaseClearlyTool(
         Arg(name="zone", description="Zone name")
     ],
     content="""
-python /app/clearly-actions.py apply_zone_changelist {zone}
+python /app/clearly_actions.py apply_zone_changelist {zone}
 """,
 )
 
@@ -121,7 +120,7 @@ migrate_aws_zone_records_to_akamai = BaseClearlyTool(
         Arg(name="zone", description="Zone name")
     ],
     content="""
-python /app/clearly-actions.py migrate_aws_zone_records_to_akamai {zone}
+python /app/clearly_actions.py migrate_aws_zone_records_to_akamai {zone}
 """,
 )
 
@@ -132,7 +131,7 @@ migrate_single_aws_zone_to_akamai = BaseClearlyTool(
         Arg(name="zone", description="Zone name")
     ],
     content="""
-python /app/clearly-actions.py migrate_single_aws_zone_to_akamai {zone}
+python /app/clearly_actions.py migrate_single_aws_zone_to_akamai {zone}
 """,
 )
 
@@ -145,7 +144,7 @@ add_roles_to_aws_account = BaseClearlyTool(
         Arg(name="group_name", description="Group name")
     ],
     content="""
-python /app/clearly-actions.py add_roles_to_aws_account {account_number} {group_name}
+python /app/clearly_actions.py add_roles_to_aws_account {account_number} {group_name}
 """,
 )
 
@@ -159,7 +158,7 @@ create_aws_account = BaseClearlyTool(
         Arg(name="account_email", description="Account email")
     ],
     content="""
-python /app/clearly-actions.py create_aws_account {ou_id} {ou_name} {account_name} {account_email}
+python /app/clearly_actions.py create_aws_account {ou_id} {ou_name} {account_name} {account_email}
 """,
 )
 
@@ -168,7 +167,7 @@ migrate_control_tower = BaseClearlyTool(
     description="Migrate control tower",
     args=[],
     content="""
-python /app/clearly-actions.py migrate_control_tower
+python /app/clearly_actions.py migrate_control_tower
 """,
 )
 
@@ -180,7 +179,7 @@ add_esg_to_all_control_tower_accounts = BaseClearlyTool(
         Arg(name="permission_set_arn_secret_key", description="Permission set ARN secret key")
     ],
     content="""
-python /app/clearly-actions.py add_esg_to_all_control_tower_accounts {esg_name} {permission_set_arn_secret_key}
+python /app/clearly_actions.py add_esg_to_all_control_tower_accounts {esg_name} {permission_set_arn_secret_key}
 """,
 )
 
@@ -193,7 +192,7 @@ add_esg_to_list_of_control_tower_accounts = BaseClearlyTool(
         Arg(name="account_numbers", description="List of account numbers")
     ],
     content="""
-python /app/clearly-actions.py add_esg_to_list_of_control_tower_accounts {esg_name} {permission_set_arn_secret_key} {account_numbers}
+python /app/clearly_actions.py add_esg_to_list_of_control_tower_accounts {esg_name} {permission_set_arn_secret_key} {account_numbers}
 """,
 )
 
@@ -206,7 +205,7 @@ add_esg_to_single_control_tower_account = BaseClearlyTool(
         Arg(name="account_number", description="Account number")
     ],
     content="""
-python /app/clearly-actions.py add_esg_to_single_control_tower_account {esg_name} {permission_set_arn_secret_key} {account_number}
+python /app/clearly_actions.py add_esg_to_single_control_tower_account {esg_name} {permission_set_arn_secret_key} {account_number}
 """,
 )
 
@@ -216,7 +215,7 @@ add_login_name_to_control_tower_role = BaseClearlyTool(
     description="Add login name to control tower role",
     args=[],
     content="""
-python /app/clearly-actions.py add_login_name_to_control_tower_role
+python /app/clearly_actions.py add_login_name_to_control_tower_role
 """,
 )
 
@@ -228,7 +227,7 @@ add_to_control_tower_role = BaseClearlyTool(
         Arg(name="locale", description="Entity locale")
     ],
     content="""
-python /app/clearly-actions.py add_to_control_tower_role {acronym} {locale}
+python /app/clearly_actions.py add_to_control_tower_role {acronym} {locale}
 """,
 )
 
@@ -240,7 +239,7 @@ add_default_roles = BaseClearlyTool(
         Arg(name="account", description="Account number")
     ],
     content="""
-python /app/clearly-actions.py add_default_roles {account}
+python /app/clearly_actions.py add_default_roles {account}
 """,
 )
 
@@ -254,7 +253,7 @@ add_granular_group_access_roles = BaseClearlyTool(
         Arg(name="env", description="Environment")
     ],
     content="""
-python /app/clearly-actions.py add_granular_group_access_roles {account} {entity_acronym} {entity_locale} {env}
+python /app/clearly_actions.py add_granular_group_access_roles {account} {entity_acronym} {entity_locale} {env}
 """,
 )
 
@@ -265,7 +264,7 @@ find_group_id = BaseClearlyTool(
         Arg(name="groupname", description="Group name")
     ],
     content="""
-python /app/clearly-actions.py find_group_id {groupname}
+python /app/clearly_actions.py find_group_id {groupname}
 """,
 )
 
@@ -278,7 +277,7 @@ create_organizational_unit = BaseClearlyTool(
         Arg(name="entity_locale", description="Entity locale")
     ],
     content="""
-python /app/clearly-actions.py create_organizational_unit {entity_acronym} {entity_locale}
+python /app/clearly_actions.py create_organizational_unit {entity_acronym} {entity_locale}
 """,
 )
 
@@ -291,7 +290,7 @@ direct_billing_account_creation = BaseClearlyTool(
         Arg(name="ou_id", description="Organization Unit ID")
     ],
     content="""
-python /app/clearly-actions.py direct_billing_account_creation {entity_acronym} {entity_locale} {ou_id}
+python /app/clearly_actions.py direct_billing_account_creation {entity_acronym} {entity_locale} {ou_id}
 """,
 )
 
@@ -305,7 +304,7 @@ direct_billing_single_account_creation = BaseClearlyTool(
         Arg(name="env", description="Environment")
     ],
     content="""
-python /app/clearly-actions.py direct_billing_single_account_creation {entity_acronym} {entity_locale} {ou_id} {env}
+python /app/clearly_actions.py direct_billing_single_account_creation {entity_acronym} {entity_locale} {ou_id} {env}
 """,
 )
 
@@ -321,7 +320,7 @@ direct_billing_network_creation = BaseClearlyTool(
         Arg(name="entity_environment", description="Entity environment")
     ],
     content="""
-python /app/clearly-actions.py direct_billing_network_creation {network_address} {account_number} {account_region} {entity_acronym} {entity_locale} {entity_environment}
+python /app/clearly_actions.py direct_billing_network_creation {network_address} {account_number} {account_region} {entity_acronym} {entity_locale} {entity_environment}
 """,
 )
 
@@ -333,7 +332,7 @@ send_teams_message = BaseClearlyTool(
         Arg(name="message", description="Message to send")
     ],
     content="""
-python /app/clearly-actions.py send_teams_message {message}
+python /app/clearly_actions.py send_teams_message {message}
 """,
 )
 
@@ -345,7 +344,7 @@ create_security_group = BaseClearlyTool(
         Arg(name="group_description", description="Group description")
     ],
     content="""
-python /app/clearly-actions.py create_security_group {group_name} {group_description}
+python /app/clearly_actions.py create_security_group {group_name} {group_description}
 """,
 )
 
@@ -356,7 +355,7 @@ get_entra_application_json = BaseClearlyTool(
         Arg(name="app_id", description="Application ID")
     ],
     content="""
-python /app/clearly-actions.py get_entra_application_json {app_id}
+python /app/clearly_actions.py get_entra_application_json {app_id}
 """,
 )
 
@@ -367,7 +366,7 @@ add_devs_to_group = BaseClearlyTool(
         Arg(name="group_id", description="Group ID")
     ],
     content="""
-python /app/clearly-actions.py add_devs_to_group {group_id}
+python /app/clearly_actions.py add_devs_to_group {group_id}
 """,
 )
 
@@ -379,7 +378,7 @@ find_members_of_ldap_groupname = BaseClearlyTool(
         Arg(name="search_base", description="Search base")
     ],
     content="""
-python /app/clearly-actions.py find_members_of_ldap_groupname {group_name} {search_base}
+python /app/clearly_actions.py find_members_of_ldap_groupname {group_name} {search_base}
 """,
 )
 
@@ -388,7 +387,7 @@ test_ldap_connection = BaseClearlyTool(
     description="Test LDAP connection",
     args=[],
     content="""
-python /app/clearly-actions.py test_ldap_connection
+python /app/clearly_actions.py test_ldap_connection
 """,
 )
 
@@ -398,7 +397,7 @@ sync_workspaces_with_ad = BaseClearlyTool(
     description="Sync workspaces with AD",
     args=[],
     content="""
-python /app/clearly-actions.py sync_workspaces_with_ad
+python /app/clearly_actions.py sync_workspaces_with_ad
 """,
 )
 
@@ -407,7 +406,7 @@ sync_billing_group_workspaces = BaseClearlyTool(
     description="Sync billing group workspaces",
     args=[],
     content="""
-python /app/clearly-actions.py sync_billing_group_workspaces
+python /app/clearly_actions.py sync_billing_group_workspaces
 """,
 )
 
@@ -418,7 +417,7 @@ get_created_workspaces_names = BaseClearlyTool(
         Arg(name="directory_id", description="Directory ID")
     ],
     content="""
-python /app/clearly-actions.py get_created_workspaces_names_for_directory {directory_id}
+python /app/clearly_actions.py get_created_workspaces_names_for_directory {directory_id}
 """,
 )
 
@@ -429,7 +428,7 @@ power_on_stopped_workspaces = BaseClearlyTool(
         Arg(name="directory_id", description="Directory ID")
     ],
     content="""
-python /app/clearly-actions.py power_on_stopped_workspaces {directory_id}
+python /app/clearly_actions.py power_on_stopped_workspaces {directory_id}
 """,
 )
 
