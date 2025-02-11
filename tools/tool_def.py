@@ -31,7 +31,7 @@ class BaseClearlyTool(Tool):
         super().__init__(
             name=name,
             type="docker",
-            image="ttl.sh/clearly-gen3:latest",
+            image="ttl.sh/clearly-gen3-test:latest",
             description=description,
             args=args,
             content=content,
