@@ -1,6 +1,6 @@
 from kubiya_sdk.tools.models import Arg, Tool
 from kubiya_sdk.tools.registry import tool_registry
-import common
+from . import common
 
 
 class BaseClearlyTool(Tool):
